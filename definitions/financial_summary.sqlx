@@ -4,11 +4,14 @@ config {
 }
 
 SELECT
-    customer_id,
-    (quantity * 25.00) AS subtotal,
-    (quantity * 25.00) * ${constants.TAX_RATE} AS estimated_tax,
-    region
+    o.order_id,
+    c.first_name,
+    c.last_name,
+    (o.quantity * 25.00) AS subtotal,
+    (o.quantity * 25.00) * ${constants.TAX_RATE} AS estimated_tax,
+    c.region
 FROM
-    ${ref("customers")}
+    ${ref("orders")} o
+INNER JOIN  ${ref("customers")} c ON o.customer_id = c.customer_id
 WHERE
     region IN ('${constants.VALID_REGIONS.join("', '")}')

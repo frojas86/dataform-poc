@@ -1,8 +1,12 @@
-config{ type: "assertion",
-  schema: "dataform_poc_datalake",
-  description: "Checks that product stock levels are never negative",
-  tags:["daily_check",
-  "inventory"] }
+config {
+    type: "assertion",
+    schema: "dataform_poc_datalake",
+    description: "Checks that product stock levels are never negative",
+    tags: ["daily_check",
+        "inventory"
+    ]
+}
+
 SELECT
   product_id,
   product_name,
