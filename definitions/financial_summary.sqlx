@@ -1,0 +1,14 @@
+config{
+    type: "table",
+    schema: "dataform_poc"
+}
+
+SELECT
+    order_id,
+    (quantity * 25.00) AS subtotal,
+    (quantity * 25.00) * ${constants.TAX_RATE} AS estimated_tax,
+    region
+FROM
+    ${ref("customers")}
+WHERE
+    region IN ('${constants.VALID_REGIONS.join("', '")}')

@@ -1,0 +1,15 @@
+config{
+    type: "assertion",
+    schema: "dataform_poc",
+    description: "Checks that product stock levels are never negative",
+    tags:["daily_check", "inventory"]
+}
+
+SELECT
+    product_id,
+    product_name,
+    stock_qty
+FROM
+    ${ref("products")}
+WHERE
+    stock_qty < 0

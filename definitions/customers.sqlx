@@ -1,5 +1,5 @@
 config{
-    type: "view", // or "table"
+    type: "view",
     schema: "dataform_poc"
 }
 
