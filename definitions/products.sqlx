@@ -1,0 +1,36 @@
+config{
+    type: "view"
+    schema: "dataform_poc"
+}
+
+SELECT 
+    'P100' AS product_id,
+    'Wireless Mouse' AS product_name,
+    'electronics' AS category,
+    25.00 AS price_uds,
+    12.00 AS cost_uds,
+    150 AS stock_qty
+UNION ALL
+SELECT
+    'P101',
+    'Yoga Mat',
+    'Fitness',
+    45.50,
+    20.00,
+    80
+UNION ALL
+SELECT
+    'P102',
+    'Coffee Mug',
+    'Kitchen',
+    15.00,
+    5.00,
+    200
+UNION ALL
+SELECT
+    'P103',
+    'Bluetooth Speaker',
+    'Electronics',
+    85.00,
+    40.00,
+    45

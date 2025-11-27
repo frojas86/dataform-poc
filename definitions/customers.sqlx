@@ -1,0 +1,36 @@
+config{
+    type: "view", // or "table"
+    schema: "dataform_poc"
+}
+
+SELECT 
+    'C001' AS customer_id,
+    'Alice' AS first_name,
+    'Johnson' AS last_name,
+    'alice@test.com' AS email,
+    DATE('2023-01-15') AS signup_date,
+    'US-East' AS region
+UNION ALL
+SELECT
+    'C002',
+    'Bob',
+    'Smith',
+    'bob@test.com',
+    DATE('2023-02-20'),
+    'US-West'
+UNION ALL
+SELECT
+    'C003',
+    'Charlie',
+    'Davis',
+    'charlie@test.com',
+    DATE('2023-03-10'),
+    'EU-Central'
+UNION ALL
+SELECT
+    'C004',
+    'Diana',
+    'Evans',
+    'diana@test.com',
+    DATE('2023-04-05'),
+    'US-East'

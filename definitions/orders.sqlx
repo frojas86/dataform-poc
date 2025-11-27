@@ -1,0 +1,36 @@
+config{
+    type: "view"
+    schema: "dataform_poc"
+}
+
+SELECT 
+    'ORD-1' AS order_id,
+    'C001' AS customer_id,
+    'P100' AS product_id,
+    DATE('2023-06-01') AS order_date,
+    'Shipped' as status,
+    2 AS quantity
+UNION ALL
+SELECT
+    'ORD-2',
+    'C002',
+    'P101',
+    DATE('2023-06-02'),
+    'Processing',
+    1
+UNION ALL
+SELECT
+    'ORD-3',
+    'C001',
+    'P103',
+    DATE('2023-06-05'),
+    'Delivered',
+    1
+UNION ALL
+SELECT
+    'ORD-4',
+    'C004',
+    'P100',
+    DATE('2023-06-06'),
+    'Cancelled',
+    5

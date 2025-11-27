@@ -1,0 +1,36 @@
+config{
+    type: "view"
+    schema: "dataform_poc"
+}
+
+SELECT
+    'S-01' AS store_id,
+    'New York' AS city,
+    'NY' AS state,
+    'Sarah Lee' AS manager_name,
+    DATE('2020-01-10') AS open_date,
+    5000 AS square_feet
+UNION ALL
+SELECT
+    'S-02',
+    'San Francisco',
+    'CA',
+    'Mike Chen',
+    DATE('2019-05-22'),
+    4200
+UNION ALL
+SELECT
+    'S-03',
+    'Austin',
+    'TX',
+    'Laura Bush',
+    DATE('2021-08-15'),
+    6000
+UNION ALL
+SELECT
+    'S-04',
+    'Chicago',
+    'IL',
+    'John Doe',
+    DATE('2022-11-21'),
+    4800
