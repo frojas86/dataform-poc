@@ -1,6 +1,6 @@
-config{
-    type: "view",
-    schema: "dataform_poc"
+config {
+    type: "table",
+    schema: "dataform_poc_datalake"
 }
 
 SELECT

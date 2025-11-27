@@ -1,5 +1,5 @@
 {
-    "defaultSchema":"dataform_poc",
+    "defaultSchema":"dataform_poc_datalake",
     "assertionSchema":"dataform_assertions",
     "warehouse":"bigquery",
     "defaultLocation":"US",

@@ -1,15 +1,13 @@
-config{
-    type: "assertion",
-    schema: "dataform_poc",
-    description: "Checks that product stock levels are never negative",
-    tags:["daily_check", "inventory"]
-}
-
+config{ type: "assertion",
+  schema: "dataform_poc_datalake",
+  description: "Checks that product stock levels are never negative",
+  tags:["daily_check",
+  "inventory"] }
 SELECT
-    product_id,
-    product_name,
-    stock_qty
+  product_id,
+  product_name,
+  stock_qty
 FROM
-    ${ref("products")}
+  ${ref("products")}
 WHERE
-    stock_qty < 0
+  stock_qty < 0

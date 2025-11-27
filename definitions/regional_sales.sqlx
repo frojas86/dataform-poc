@@ -1,27 +1,33 @@
-config{
-    type:"table",
-    schema:"dataform_poc",
-    description:"Calculates total revenue by region, excluding cancelled orders.",
-    --Dataform feature: Assertions allow you to test data quality automatically
-    assertions:{
+config {
+    type: "table",
+    schema: "dataform_poc_datalake",
+    description: "Calculates total revenue by region, excluding cancelled orders.",
+    // Dataform feature: Assertions allow you to test data quality automatically
+    assertions: {
         uniqueKey: ["region"],
-        nonNull: ["region", "total_revenue"]
+        nonNull: ["region",
+            "total_revenue"
+        ]
     }
 }
 
 SELECT
-    c.region,
-    COUNT(DISTINCT o.order_id) AS total_orders,
-    SUM(o.quantity) AS total_items_sold,
-    SUM(o.quantity * p.price_uds) AS total_revenue
+  c.region,
+  COUNT(DISTINCT o.order_id) AS total_orders,
+  SUM(o.quantity) AS total_items_sold,
+  SUM(o.quantity * p.price_uds) AS total_revenue
 FROM
-    --Dataform feature: ref() function creates the dependency graph
-    ${ref("orders")} AS o
+  --Dataform feature: ref() function creates the dependency graph
+  ${ref("orders")} AS o
 LEFT JOIN
-    ${ref("products")} AS p ON o.product_id = p.product_id
+  ${ref("products")} AS p
+ON
+  o.product_id = p.product_id
 LEFT JOIN
-    ${ref("customers")} AS c ON o.customer_id = c.customer_id
+  ${ref("customers")} AS c
+ON
+  o.customer_id = c.customer_id
 WHERE
-    o.status != 'Cancelled'
+  o.status != 'Cancelled'
 GROUP BY
-    1
+  1
