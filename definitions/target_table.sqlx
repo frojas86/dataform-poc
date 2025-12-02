@@ -1,0 +1,41 @@
+
+config { type: "table" }
+
+SELECT
+    s1.col1 AS target_col1,
+    s1.col2 AS target_col2,
+    s1.col3 AS target_col3,
+    s1.col4 AS target_col4,
+    s1.col5 AS target_col5,
+    s1.col6 AS target_col6,
+    s1.col7 AS target_col7,
+    s1.col8 AS target_col8,
+    s1.col9 AS target_col9,
+    s1.col10 AS target_col10
+FROM ${ref("source_1")} AS s1
+UNION ALL
+SELECT
+    s2.col1,
+    s2.col2,
+    s2.col3,
+    s2.col4,
+    s2.col5,
+    s2.col6,
+    s2.col7,
+    s2.col8,
+    s2.col9,
+    s2.col10
+FROM ${ref("source_2")} AS s2
+UNION ALL
+SELECT
+    s3.col1,
+    s3.col2,
+    s3.col3,
+    s3.col4,
+    s3.col5,
+    s3.col6,
+    s3.col7,
+    s3.col8,
+    s3.col9,
+    s3.col10
+FROM ${ref("source_3")} AS s3

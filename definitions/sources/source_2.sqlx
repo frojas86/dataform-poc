@@ -1,0 +1,12 @@
+
+config { type: "table" }
+
+SELECT 6 as col1, "f" as col2, false as col3, 2.1 as col4, DATE("2023-02-01") as col5, TIMESTAMP("2023-02-01 12:00:00") as col6, "foo" as col7, 600 as col8, "u" as col9, "source2" as col10
+UNION ALL
+SELECT 7, "g", true, 2.2, DATE("2023-02-02"), TIMESTAMP("2023-02-02 12:00:00"), "bar", 700, "t", "source2"
+UNION ALL
+SELECT 8, "h", false, 2.3, DATE("2023-02-03"), TIMESTAMP("2023-02-03 12:00:00"), "baz", 800, "s", "source2"
+UNION ALL
+SELECT 9, "i", true, 2.4, DATE("2023-02-04"), TIMESTAMP("2023-02-04 12:00:00"), "qux", 900, "r", "source2"
+UNION ALL
+SELECT 10, "j", false, 2.5, DATE("2023-02-05"), TIMESTAMP("2023-02-05 12:00:00"), "quux", 1000, "q", "source2"
