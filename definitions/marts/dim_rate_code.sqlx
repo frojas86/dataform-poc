@@ -1,0 +1,25 @@
+config {
+    type: "table",
+    description: "Rate code dimension table"
+}
+
+SELECT
+    FARM_FINGERPRINT(rate_code) as rate_code_key,
+    rate_code,
+    CASE
+        WHEN rate_code = '1'
+        THEN 'Standard rate'
+        WHEN rate_code = '2'
+        THEN 'JFK'
+        WHEN rate_code = '3'
+        THEN 'Newark'
+        WHEN rate_code = '4'
+        THEN 'Nassau or Westchester'
+        WHEN rate_code = '5'
+        THEN 'Negotiated fare'
+        WHEN rate_code = '6'
+        THEN 'Group ride'
+        ELSE 'Unknown'
+    END AS rate_code_name
+FROM
+    ${ref("tlc_green_trips_2022")}

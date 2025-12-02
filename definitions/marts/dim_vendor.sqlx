@@ -1,0 +1,17 @@
+config {
+    type: "table",
+    description: "Vendor dimension table"
+}
+
+SELECT
+    FARM_FINGERPRINT(vendor_id) as vendor_key,
+    vendor_id,
+    CASE
+        WHEN vendor_id = '1'
+        THEN 'Creative Mobile Technologies, LLC'
+        WHEN vendor_id = '2'
+        THEN 'VeriFone Inc.'
+        ELSE 'Unknown'
+    END AS vendor_name
+FROM
+    ${ref("tlc_green_trips_2022")}

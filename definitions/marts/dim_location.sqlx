@@ -1,0 +1,21 @@
+config {
+    type: "table",
+    description: "Location dimension table"
+}
+
+WITH all_locations AS (
+    SELECT pickup_location_id as location_id FROM ${ref("tlc_green_trips_2022")}
+    UNION DISTINCT
+    SELECT dropoff_location_id as location_id FROM ${ref("tlc_green_trips_2022")}
+)
+SELECT
+    FARM_FINGERPRINT(all_locations.location_id) as location_key,
+    all_locations.location_id,
+    tzg.zone_name,
+    tzg.borough
+FROM
+    all_locations
+LEFT JOIN
+    ${ref("taxi_zone_geom")} as tzg
+ON
+    all_locations.location_id = tzg.zone_id
