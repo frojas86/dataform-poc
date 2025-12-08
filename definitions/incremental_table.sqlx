@@ -1,0 +1,17 @@
+config { 
+    type: "incremental",
+    bigquery: {
+        partitionBy: "event_date"
+    },
+    description: "This table is an example of an incremental table. It is partitioned by event_date."
+}
+SELECT 
+    event_id,
+    user_id,
+    event_timestamp,
+    event_date
+FROM ${ref("staging_table")}
+-- The where clause is what makes this table incremental.
+-- Dataform will only process records that satisfy this condition.
+-- `when(incremental(), ...)` ensures this condition is only applied on incremental runs.
+${when(incremental(), `WHERE event_timestamp > (SELECT MAX(event_timestamp) FROM ${self()})`)}

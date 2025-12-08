@@ -1,0 +1,54 @@
+
+config { 
+    type: "operations",
+    hasOutput: true,
+    description: "This is the source data for the incremental load example. It creates a table and inserts some sample data."
+}
+
+CREATE OR REPLACE TABLE ${self()} (
+    event_id STRING,
+    user_id STRING,
+    event_timestamp TIMESTAMP,
+    event_date DATE
+) AS
+SELECT
+    "evt1" AS event_id,
+    "usr1" AS user_id,
+    TIMESTAMP("2023-01-01 10:00:00") AS event_timestamp,
+    DATE("2023-01-01") AS event_date
+UNION ALL
+SELECT
+    "evt2" AS event_id,
+    "usr2" AS user_id,
+    TIMESTAMP("2023-01-01 11:00:00") AS event_timestamp,
+    DATE("2023-01-01") AS event_date
+UNION ALL
+SELECT
+    "evt3" AS event_id,
+    "usr1" AS user_id,
+    TIMESTAMP("2023-01-02 12:00:00") AS event_timestamp,
+    DATE("2023-01-02") AS event_date
+UNION ALL
+SELECT
+    "evt4" AS event_id,
+    "usr2" AS user_id,
+    TIMESTAMP("2023-01-03 10:00:00") AS event_timestamp,
+    DATE("2023-01-03") AS event_date
+UNION ALL
+SELECT
+    "evt5" AS event_id,
+    "usr1" AS user_id,
+    TIMESTAMP("2023-01-03 11:00:00") AS event_timestamp,
+    DATE("2023-01-03") AS event_date
+UNION ALL
+SELECT
+    "evt6" AS event_id,
+    "usr2" AS user_id,
+    TIMESTAMP("2023-01-04 09:00:00") AS event_timestamp,
+    DATE("2023-01-04") AS event_date
+UNION ALL
+SELECT
+    "evt7" AS event_id,
+    "usr1" AS user_id,
+    TIMESTAMP("2023-01-04 11:00:00") AS event_timestamp,
+    DATE("2023-01-04") AS event_date
