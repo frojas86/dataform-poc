@@ -1,0 +1,15 @@
+config {
+  type: "view",
+  database: "dplex-dfrom-sbx-8b5d",
+  schema: "dataform_poc_datalake",
+  name: "test_assertions_view",
+  description: "A view on the source_table to test a succeeding assertion.",
+  tags: ["assertions-test"],
+  assertions: {
+    rowConditions: [
+      "id > 0"
+    ]
+  }
+}
+
+SELECT * FROM ${ref("source_table")}

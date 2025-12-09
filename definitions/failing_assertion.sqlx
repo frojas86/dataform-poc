@@ -1,0 +1,14 @@
+config {
+  type: "assertion",
+  database: "dplex-dfrom-sbx-8b5d",
+  schema: "dataform_poc_datalake",
+  name: "failing_assertion",
+  description: "An assertion that is expected to fail.",
+  tags: ["assertions-test"]
+}
+
+SELECT
+  *
+FROM
+  ${ref("test_assertions_view")}
+WHERE id > 1

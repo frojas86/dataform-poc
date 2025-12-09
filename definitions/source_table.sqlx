@@ -1,0 +1,11 @@
+config {
+  type: "table",
+  database: "dplex-dfrom-sbx-8b5d",
+  schema: "dataform_poc_datalake",
+  name: "source_table",
+  description: "A simple table with sample data for testing assertions."
+}
+
+SELECT 1 AS id, "test1" AS name
+UNION ALL
+SELECT 2 AS id, "test2" AS name
