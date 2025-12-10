@@ -1,0 +1,5 @@
+defaultProject: dplex-dfrom-sbx-8b5d
+defaultLocation: us-east1
+defaultDataset: dataform
+defaultAssertionDataset: dataform_assertions
+dataformCoreVersion: 3.0.0
