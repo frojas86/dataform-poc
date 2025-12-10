@@ -1,0 +1,36 @@
+config { type: "table" }
+
+WITH questions_agg AS (
+    SELECT
+        owner_user_id,
+        COUNT(*) AS question_count
+    FROM
+        ${ref("posts_questions")}
+    GROUP BY
+        owner_user_id
+),
+answers_agg AS (
+    SELECT
+        owner_user_id,
+        COUNT(*) AS answer_count
+    FROM
+        ${ref("posts_answers")}
+    GROUP BY
+        owner_user_id
+)
+
+SELECT
+    u.id as user_id,
+    u.display_name,
+    u.reputation,
+    q.question_count,
+    a.answer_count
+FROM
+    ${ref("users")} AS u
+LEFT JOIN
+    questions_agg AS q ON u.id = q.owner_user_id
+LEFT JOIN
+    answers_agg AS a ON u.id = a.owner_user_id
+ORDER BY
+    u.reputation DESC
+LIMIT 1000

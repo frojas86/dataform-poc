@@ -1,0 +1,13 @@
+config { type: "table" }
+
+SELECT
+    u.id as user_id,
+    u.display_name,
+    u.reputation,
+    (SELECT count(*) FROM ${ref("posts_questions")} AS q WHERE q.owner_user_id = u.id) AS question_count,
+    (SELECT count(*) FROM ${ref("posts_answers")} AS a WHERE a.owner_user_id = u.id) AS answer_count
+FROM
+    ${ref("users")} AS u
+ORDER BY
+    u.reputation DESC
+LIMIT 1000
