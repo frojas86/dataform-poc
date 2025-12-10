@@ -1,0 +1,27 @@
+config {
+  type: "table",
+  schema: "dataform_poc_datalake",
+  name: "simple_query",
+  description: "This query finds questions with accepted answers and retrieves the answer and user details using JOINs."
+}
+
+SELECT
+  q.id AS question_id,
+  q.title AS question_title,
+  q.body AS question_body,
+  a.id AS answer_id,
+  a.body AS answer_body,
+  u.id AS user_id,
+  u.display_name AS user_display_name
+FROM
+  ${ref("posts_questions")} AS q
+JOIN
+  ${ref("posts_answers")} AS a
+ON
+  q.accepted_answer_id = a.id
+JOIN
+  ${ref("users")} AS u
+ON
+  a.owner_user_id = u.id
+WHERE
+    q.accepted_answer_id IS NOT NULL
