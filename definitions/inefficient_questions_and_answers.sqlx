@@ -1,5 +1,8 @@
+config { 
+  type: "table",
+  schema:"dataform_poc_datalake"
+  }
 
-config { type: "table" }
 
 /**
  A complex and inefficient transformation that joins questions and answers.

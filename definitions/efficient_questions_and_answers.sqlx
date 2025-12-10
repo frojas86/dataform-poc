@@ -1,5 +1,8 @@
 
-config { type: "table" }
+config { 
+  type: "table",
+  schema:"dataform_poc_datalake"
+  }
 
 /**
  A more efficient transformation that joins questions and answers from the Stack Overflow dataset.
