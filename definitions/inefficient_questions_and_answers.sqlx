@@ -1,0 +1,26 @@
+
+config { type: "table" }
+
+/**
+ A complex and inefficient transformation that joins questions and answers.
+ */
+SELECT
+  q.title,
+  q.body AS question_body,
+  q.creation_date AS question_creation_date,
+  a.body AS answer_body,
+  a.creation_date AS answer_creation_date
+FROM
+  ${ref("posts_questions")} AS q,
+  ${ref("posts_answers")} AS a
+WHERE
+  q.id IN (
+    SELECT
+      id
+    FROM
+      ${ref("posts_questions")}
+    WHERE
+      score > 100
+      AND answer_count >= 5
+  )
+  AND q.id = a.parent_id
