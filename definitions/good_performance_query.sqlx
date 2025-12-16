@@ -1,0 +1,19 @@
+
+config {
+  type: "table",
+  name: "good_performance_query"
+}
+
+SELECT
+    q.id AS question_id,
+    q.title,
+    q.body as question_body,
+    a.id AS answer_id,
+    a.body as answer_body
+FROM
+    ${ref("posts_questions")} AS q
+INNER JOIN
+    ${ref("posts_answers")} AS a ON q.id = a.parent_id
+WHERE
+    q.favorite_count > 100
+    AND q.tags LIKE '%bigquery%'
