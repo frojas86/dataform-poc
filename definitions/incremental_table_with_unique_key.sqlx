@@ -1,0 +1,16 @@
+config {
+  type: "incremental",
+  tags:"incremental",
+  name: "incremental_table_with_unique_key",
+  uniqueKey: ["user_id"],
+  bigquery: {
+    partitionBy: "DATE(updated_at)"
+  }
+}
+
+SELECT
+  user_id,
+  name,
+  updated_at
+FROM
+  ${ref("source_table_with_unique_key")}

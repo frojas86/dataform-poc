@@ -1,0 +1,17 @@
+config {
+  type: "table",
+  tags:"incremental",
+  name: "source_table_with_unique_key"
+}
+
+SELECT 1 AS user_id, 'John Doe A.' AS name, TIMESTAMP('2023-01-01 10:00:00') AS updated_at
+UNION ALL
+SELECT 2 AS user_id, 'Jane Smith' AS name, TIMESTAMP('2023-01-01 11:00:00') AS updated_at
+UNION ALL
+SELECT 3 AS user_id, 'Peter Jones Walter' AS name, TIMESTAMP('2023-01-02 12:00:00') AS updated_at
+UNION ALL
+SELECT 4 AS user_id, 'Michael Myers' AS name, TIMESTAMP('2023-01-02 12:00:00') AS updated_at
+UNION ALL
+SELECT 5 AS user_id, 'Michael Jordan' AS name, TIMESTAMP('2023-04-02 12:00:00') AS updated_at
+UNION ALL
+SELECT 6 AS user_id, 'Koby B' AS name, TIMESTAMP('2023-03-02 12:00:00') AS updated_at
